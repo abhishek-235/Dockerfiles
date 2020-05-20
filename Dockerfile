@@ -5,13 +5,19 @@ RUN apt-get update --fix-missing
 RUN apt-get install -y wget gnupg2 gnupg gnupg1
 RUN apt-get install inetutils-ping net-tools curl nano -y
 
-RUN wget  -q -O - https://pkg.jenkins.io/debian-stable/jenkins.io.key | apt-key add -
+#RUN wget  -q -O - https://pkg.jenkins.io/debian-stable/jenkins.io.key | apt-key add -
 
-RUN echo "deb https://pkg.jenkins.io/debian-stable binary/" >> /etc/apt/sources.list
+#RUN echo "deb https://pkg.jenkins.io/debian-stable binary/" >> /etc/apt/sources.list
 RUN apt-get install openjdk-11-jre-headless -y
 
-RUN apt-get update \
-    && apt-get install jenkins -y
+RUN java -version
+
+RUN apt-get install -y dpkg
+COPY ./jenkins_2.222.3_all.deb /
+RUN dpkg -i jenkins_2.222.3_all.deb
+
+#RUN apt-get update \
+#    && apt-get install jenkins -y
 
 # git will be used in our task so install git
 RUN apt-get install git -y
