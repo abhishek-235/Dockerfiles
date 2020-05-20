@@ -12,3 +12,6 @@ You can download docker image: **abhishek235/ubuntu-jenkins:complete-pipeline** 
 When you launch a new container using this image, here will be the Jenkins username and password:
 username: admin
 password: admin
+
+
+_Git max upload file size for now is **50MB** and jenkins debian package size is greater than default size allowed. So It might be possible that the file corrupted while uploading. You can download you own debian package and replace with this debian package._
